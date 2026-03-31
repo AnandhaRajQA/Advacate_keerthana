@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C. Keerthana | Advocate</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D5A3;
+      --gold-dark: #8B6914;
+      --deep: #0A0A0F;
+      --surface: #0F0F1A;
+      --surface2: #16162A;
+      --text: #F0EDE8;
+      --muted: #8A8A9A;
+      --accent: #D4AF37;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--deep);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      cursor: none
+    }
+
+    .cursor {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all .12s ease
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.8);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1)
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      letter-spacing: .3em;
+      color: var(--gold);
+      text-transform: uppercase
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      transition: color .3s
+    }
+
+    .nav-links a:hover {
+      color: var(--gold)
+    }
+
+    .nav-cta {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: .5rem 1.5rem;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .3s;
+      font-family: 'DM Sans', sans-serif
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--deep)
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    #hero {
+      padding: 0 4rem;
+      justify-content: center;
+      flex-direction: column
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 70% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%)
+    }
+
+    .scales-bg {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='30' r='4' fill='%23C9A84C'/%3E%3Cline x1='100' y1='34' x2='100' y2='80' stroke='%23C9A84C' stroke-width='2'/%3E%3Cline x1='40' y1='80' x2='160' y2='80' stroke='%23C9A84C' stroke-width='2'/%3E%3Ccircle cx='40' cy='80' r='3' fill='%23C9A84C'/%3E%3Ccircle cx='160' cy='80' r='3' fill='%23C9A84C'/%3E%3Cline x1='40' y1='83' x2='30' y2='115' stroke='%23C9A84C' stroke-width='1.5'/%3E%3Cline x1='40' y1='83' x2='50' y2='115' stroke='%23C9A84C' stroke-width='1.5'/%3E%3Cpath d='M28 115 Q40 125 52 115' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3Cline x1='160' y1='83' x2='148' y2='105' stroke='%23C9A84C' stroke-width='1.5'/%3E%3Cline x1='160' y1='83' x2='172' y2='105' stroke='%23C9A84C' stroke-width='1.5'/%3E%3Cpath d='M146 105 Q160 115 174 105' stroke='%23C9A84C' stroke-width='1.5' fill='none'/%3E%3Cline x1='100' y1='145' x2='100' y2='175' stroke='%23C9A84C' stroke-width='2'/%3E%3Crect x='75' y='173' width='50' height='6' rx='2' fill='%23C9A84C'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 2rem;
+      animation: fadeUp .8s ease forwards
+    }
+
+    .hero-tag span {
+      font-size: .7rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold)
+    }
+
+    .hero-tag::before,
+    .hero-tag::after {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .5
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -.02em;
+      opacity: 0;
+      animation: fadeUp .9s .15s ease forwards
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold)
+    }
+
+    .hero-title .last {
+      display: block
+    }
+
+    .hero-sub {
+      font-size: .95rem;
+      color: var(--muted);
+      margin: 1.5rem 0 2.5rem;
+      max-width: 420px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp .9s .3s ease forwards;
+      font-weight: 300
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .9s .45s ease forwards
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--deep);
+      padding: .9rem 2.5rem;
+      font-size: .8rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      transition: all .3s
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light)
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--gold);
+      padding: .9rem 2.5rem;
+      font-size: .8rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      background: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all .3s
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, 0.05)
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      right: 4rem;
+      display: flex;
+      gap: 3rem;
+      opacity: 0;
+      animation: fadeUp .9s .6s ease forwards
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      line-height: 1
+    }
+
+    .stat-label {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: .3rem
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 4rem
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.5rem
+    }
+
+    .section-tag span {
+      font-size: .7rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold)
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .5
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1rem
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold)
+    }
+
+    #about {
+      background: var(--surface)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem
+    }
+
+    .about-img-wrap {
+      position: relative
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--surface2);
+      overflow: hidden;
+      position: relative
+    }
+
+    .about-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), transparent)
+    }
+
+    .about-frame {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px solid rgba(201, 168, 76, 0.2)
+    }
+
+    .about-content p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-weight: 300
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem
+    }
+
+    .highlight-item {
+      padding: 1.2rem;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      background: rgba(201, 168, 76, 0.02)
+    }
+
+    .highlight-item h4 {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .4rem
+    }
+
+    .highlight-item p {
+      color: var(--muted);
+      font-size: .875rem;
+      margin: 0
+    }
+
+    #practice {
+      background: var(--deep)
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 3rem;
+      background: rgba(201, 168, 76, 0.1)
+    }
+
+    .practice-card {
+      background: var(--deep);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+      cursor: pointer
+    }
+
+    .practice-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform .5s
+    }
+
+    .practice-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .practice-card:hover {
+      background: var(--surface)
+    }
+
+    .practice-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem
+    }
+
+    .practice-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: .7rem
+    }
+
+    .practice-card p {
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.7;
+      font-weight: 300
+    }
+
+    .practice-num {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(201, 168, 76, 0.06);
+      line-height: 1
+    }
+
+    #cases {
+      background: var(--surface)
+    }
+
+    .cases-list {
+      margin-top: 3rem
+    }
+
+    .case-item {
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 2rem 0;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      transition: padding .3s;
+      cursor: pointer
+    }
+
+    .case-item:hover {
+      padding-left: 1rem
+    }
+
+    .case-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      opacity: .6
+    }
+
+    .case-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: .3rem
+    }
+
+    .case-desc {
+      font-size: .825rem;
+      color: var(--muted);
+      font-weight: 300
+    }
+
+    .case-result {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: var(--gold)
+    }
+
+    #testimonials {
+      background: var(--deep)
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem
+    }
+
+    .testimonial-card {
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      padding: 2rem;
+      background: var(--surface);
+      position: relative;
+      transition: border-color .3s
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(201, 168, 76, 0.3)
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: rgba(201, 168, 76, 0.15);
+      position: absolute;
+      top: -.5rem;
+      left: 1.2rem;
+      line-height: 1
+    }
+
+    .testimonial-text {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      margin-top: 1rem
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      padding-top: 1rem
+    }
+
+    .author-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      flex-shrink: 0
+    }
+
+    .author-name {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--text)
+    }
+
+    .author-case {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .15rem
+    }
+
+    #contact {
+      background: var(--surface);
+      justify-content: center;
+      text-align: center
+    }
+
+    .contact-inner {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto
+    }
+
+    .contact-inner .section-tag {
+      justify-content: center
+    }
+
+    .contact-inner .section-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem)
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2.5rem 0
+    }
+
+    .contact-line {
+      font-size: .875rem;
+      color: var(--muted);
+      letter-spacing: .1em
+    }
+
+    .contact-line strong {
+      color: var(--text)
+    }
+
+    .contact-divider {
+      width: 60px;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.3);
+      margin: 1rem auto
+    }
+
+    .scroll-line {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      z-index: 50
+    }
+
+    .scroll-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.3);
+      transition: all .3s;
+      cursor: pointer
+    }
+
+    .scroll-dot.active {
+      background: var(--gold);
+      transform: scale(1.5)
+    }
+
+    .scroll-label {
+      font-size: .55rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-lr;
+      margin-top: .5rem
+    }
+
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    footer p {
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .1em
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    .portrait-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: var(--surface2)
+    }
+
+    .portrait-placeholder svg {
+      opacity: .15
+    }
+
+    .portrait-placeholder span {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: .5
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 200
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      transition: all .3s
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg)
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg)
+    }
+
+    @media(max-width:900px) {
+      .practice-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-stats {
+        right: 2rem;
+        bottom: 2rem;
+        gap: 2rem
+      }
+
+      #hero {
+        padding: 0 3rem
+      }
+    }
+
+    @media(max-width:768px) {
+      nav {
+        padding: 1.2rem 2rem
+      }
+
+      .nav-cta {
+        display: none
+      }
+
+      .hamburger {
+        display: flex
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transition: right .4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 99;
+        margin: 0;
+        display: flex
+      }
+
+      .nav-links.active {
+        right: 0
+      }
+
+      .nav-links a {
+        font-size: 1.2rem
+      }
+
+      #hero {
+        padding: 6rem 2rem 3rem;
+        justify-content: center
+      }
+
+      .scales-bg {
+        width: 350px;
+        height: 350px;
+        right: -10%;
+        opacity: 0.03
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 12vw, 4rem)
+      }
+
+      .hero-sub {
+        margin: 1.5rem 0 2rem
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        width: 100%
+      }
+
+      .hero-actions button {
+        width: 100%
+      }
+
+      .hero-stats {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 4rem;
+        justify-content: space-between;
+        width: 100%
+      }
+
+      .section-inner {
+        padding: 4rem 2rem
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      .practice-grid {
+        grid-template-columns: 1fr
+      }
+
+      .case-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem 0
+      }
+
+      .case-year {
+        margin-bottom: -0.5rem;
+        font-size: 1rem;
+        display: inline-block
+      }
+
+      .case-result {
+        justify-self: start
+      }
+
+      .scroll-line {
+        display: none
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem;
+        text-align: center
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero-stats {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr
+      }
+
+      .contact-details {
+        margin: 1.5rem 0
+      }
+
+      .section-title {
+        font-size: 2.2rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <div class="nav-logo">C. Keerthana</div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Consult</a>
+  </nav>
+
+  <div class="scroll-line">
+    <div class="scroll-dot active" data-section="hero"
+      onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"></div>
+    <div class="scroll-dot" data-section="about"
+      onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"></div>
+    <div class="scroll-dot" data-section="practice"
+      onclick="document.getElementById('practice').scrollIntoView({behavior:'smooth'})"></div>
+    <div class="scroll-dot" data-section="cases"
+      onclick="document.getElementById('cases').scrollIntoView({behavior:'smooth'})"></div>
+    <div class="scroll-dot" data-section="testimonials"
+      onclick="document.getElementById('testimonials').scrollIntoView({behavior:'smooth'})"></div>
+    <div class="scroll-dot" data-section="contact"
+      onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="scales-bg"></div>
+    <div class="hero-tag"><span>Advocate &amp; Civil Litigator</span></div>
+    <h1 class="hero-title">
+      <em>C. Keerthana</em>
+      <span class="last">Advocate</span>
+    </h1>
+    <p class="hero-sub">Committed to justice through meticulous legal strategy, relentless advocacy, and an unwavering
+      dedication to every client's rightful outcome.</p>
+    <div class="hero-actions">
+      <button class="btn-primary"
+        onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Schedule Consultation</button>
+      <button class="btn-ghost" onclick="document.getElementById('practice').scrollIntoView({behavior:'smooth'})">View
+        Practice Areas</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">2+</span>
+        <p class="stat-label">Years Practice</p>
+      </div>
+      <div>
+        <span class="stat-num">200+</span>
+        <p class="stat-label">Cases Handled</p>
+      </div>
+      <div>
+        <span class="stat-num">94%</span>
+        <p class="stat-label">Success Rate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-frame"></div>
+          <div class="about-img">
+            <img src="image.png" alt="C. Keerthana" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="section-tag"><span>About</span></div>
+          <h2 class="section-title">Championing <em>Civil Rights</em> with Purpose</h2>
+          <div class="about-content">
+            <p>Advocate C. Keerthana is a distinguished civil litigation attorney with over eight years of experience
+              navigating the complexities of civil law. Known for a sharp analytical mind and a compassionate approach,
+              she has built a formidable reputation across Tamil Nadu's legal circles.</p>
+            <p>Her practice is built on a foundation of thorough case preparation, strategic litigation, and an
+              uncompromising commitment to achieving justice for every client she represents — from individuals to
+              corporations.</p>
+            <p>Recognised for her ability to dissect complex legal issues and present compelling arguments, Advocate
+              Keerthana brings both passion and precision to every courtroom appearance.</p>
+          </div>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <h4>Education</h4>
+              <p>LLB — School of Law</p>
+            </div>
+            <div class="highlight-item">
+              <h4>Bar Enrollment</h4>
+              <p>Tamil Nadu State Bar Council</p>
+            </div>
+            <div class="highlight-item">
+              <h4>Courts</h4>
+              <p>High Court, District Courts, Civil Tribunals</p>
+            </div>
+            <div class="highlight-item">
+              <h4>Languages</h4>
+              <p>Tamil, English</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE AREAS -->
+  <section id="practice">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag"><span>Expertise</span></div>
+        <h2 class="section-title">Practice <em>Areas</em></h2>
+      </div>
+      <div class="practice-grid reveal">
+        <div class="practice-card">
+          <div class="practice-num">01</div>
+          <div class="practice-icon">⚖</div>
+          <h3>Property Disputes</h3>
+          <p>Representing clients in complex land acquisition, encroachment, title disputes, and partition matters
+            before civil courts.</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">02</div>
+          <div class="practice-icon">📋</div>
+          <h3>Contract Litigation</h3>
+          <p>Resolving breach of contract, specific performance, and injunction matters with precision and strategic
+            depth.</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">03</div>
+          <div class="practice-icon">🏛</div>
+          <h3>Writ Petitions</h3>
+          <p>Filing and arguing writ petitions before the High Court against arbitrary state actions affecting civil
+            rights.</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">04</div>
+          <div class="practice-icon">👨‍👩‍👧</div>
+          <h3>Family &amp; Succession</h3>
+          <p>Handling matrimonial disputes, inheritance claims, and succession certificates with sensitivity and legal
+            acuity.</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">05</div>
+          <div class="practice-icon">💼</div>
+          <h3>Commercial Disputes</h3>
+          <p>Representing businesses in shareholder disputes, insolvency matters, and commercial contract enforcement.
+          </p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-num">06</div>
+          <div class="practice-icon">🛡</div>
+          <h3>Consumer Protection</h3>
+          <p>Advocating for consumer rights and fighting unfair trade practices before consumer forums and civil courts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTABLE CASES -->
+  <section id="cases">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag"><span>Track Record</span></div>
+        <h2 class="section-title">Notable <em>Victories</em></h2>
+      </div>
+      <div class="cases-list reveal">
+        <div class="case-item">
+          <span class="case-year">2023</span>
+          <div>
+            <p class="case-title">Landmark Property Restitution — Madras High Court</p>
+            <p class="case-desc">Secured title restoration for joint family property fraudulently transferred over two
+              decades</p>
+          </div>
+          <span class="case-result">Victory</span>
+        </div>
+        <div class="case-item">
+          <span class="case-year">2022</span>
+          <div>
+            <p class="case-title">Commercial Contract Enforcement — District Court, Chennai</p>
+            <p class="case-desc">Obtained specific performance decree in ₹2.4 crore real estate contract dispute</p>
+          </div>
+          <span class="case-result">Decree</span>
+        </div>
+        <div class="case-item">
+          <span class="case-year">2022</span>
+          <div>
+            <p class="case-title">Writ Against Unlawful Demolition — High Court</p>
+            <p class="case-desc">Stayed and ultimately quashed illegal demolition notice affecting 40 families in urban
+              development case</p>
+          </div>
+          <span class="case-result">Quashed</span>
+        </div>
+        <div class="case-item">
+          <span class="case-year">2021</span>
+          <div>
+            <p class="case-title">Succession &amp; Inheritance Dispute — Civil Court</p>
+            <p class="case-desc">Successfully established intestate succession rights for estranged family in contested
+              will matter</p>
+          </div>
+          <span class="case-result">Victory</span>
+        </div>
+        <div class="case-item">
+          <span class="case-year">2020</span>
+          <div>
+            <p class="case-title">Consumer Forum — Defective Construction</p>
+            <p class="case-desc">Represented 18 homebuyers against developer; secured full refund plus compensation
+              award</p>
+          </div>
+          <span class="case-result">Awarded</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag"><span>Client Words</span></div>
+        <h2 class="section-title">What Clients <em>Say</em></h2>
+      </div>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <p class="testimonial-text">Advocate Keerthana handled our decade-long property dispute with outstanding
+            skill. She explained every step clearly and never gave up. We finally got justice after 10 years, all thanks
+            to her relentless effort.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <p class="author-name">Rajendran M.</p>
+              <p class="author-case">Property Dispute · Chennai</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Her command of civil law is remarkable. She drafted our writ petition flawlessly
+            and argued it brilliantly before the High Court. Our demolition order was quashed within weeks. Truly
+            exceptional.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <p class="author-name">Saraswathi K.</p>
+              <p class="author-case">Writ Petition · Madras HC</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">We engaged Advocate Keerthana for a complex commercial dispute. Her strategic
+            thinking and deep legal knowledge helped us recover our entire dues. Professional, prompt, and genuinely
+            caring about our outcome.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <p class="author-name">Aravind Constructions</p>
+              <p class="author-case">Contract Litigation · District Court</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner reveal">
+        <div class="section-tag"><span>Get in Touch</span></div>
+        <h2 class="section-title">Let's Discuss <em>Your Case</em></h2>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;margin-top:1rem;font-weight:300">Every case
+          deserves dedicated attention. Schedule a confidential consultation to discuss your legal matter and understand
+          your options.</p>
+        <div class="contact-divider"></div>
+        <div class="contact-details">
+          <p class="contact-line"><strong>Chambers:</strong> [Your Chamber Address], Chennai, Tamil Nadu</p>
+          <p class="contact-line"><strong>Mobile:</strong> +91 [Your Number]</p>
+          <p class="contact-line"><strong>Email:</strong> keerthana@advocatekeerthana.in</p>
+          <p class="contact-line"><strong>Hours:</strong> Monday – Saturday, 10:00 AM – 6:00 PM</p>
+        </div>
+        <div class="contact-divider"></div>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem">
+          <button class="btn-primary" onclick="window.location.href='mailto:keerthana@advocatekeerthana.in'">Book
+            Consultation</button>
+          <button class="btn-ghost" onclick="window.open('https://wa.me/91XXXXXXXXXX','_blank')">WhatsApp Chat</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 Advocate C. Keerthana — All Rights Reserved</p>
+    <p>Civil Litigation · Madras High Court · Tamil Nadu</p>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px' });
+    function animRing() { rx += (mx - rx) * .1; ry += (my - ry) * .1; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing) }
+    animRing();
+    document.querySelectorAll('button,a,.nav-cta,.practice-card,.case-item,.testimonial-card,.scroll-dot').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.width = '14px'; cursor.style.height = '14px'; ring.style.width = '50px'; ring.style.height = '50px'; ring.style.borderColor = 'rgba(201,168,76,0.6)' });
+      el.addEventListener('mouseleave', () => { cursor.style.width = '8px'; cursor.style.height = '8px'; ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(201,168,76,0.4)' })
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target) } }) }, { threshold: .12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Scroll indicator dots
+    const sections = ['hero', 'about', 'practice', 'cases', 'testimonials', 'contact'];
+    const dots = document.querySelectorAll('.scroll-dot');
+    const sio = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { const i = sections.indexOf(e.target.id); dots.forEach(d => d.classList.remove('active')); if (i >= 0) dots[i].classList.add('active') } }) }, { threshold: .4 });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) sio.observe(el) });
+
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => { nav.style.background = window.scrollY > 50 ? 'rgba(10,10,15,0.97)' : 'rgba(10,10,15,0.8)' });
+
+    // Smooth nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }) })
+    });
+
+    // Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburger');
+    const mobileNavLinks = document.getElementById('navLinks');
+    if (hamburgerBtn && mobileNavLinks) {
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileNavLinks.classList.toggle('active');
+      });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburgerBtn.classList.remove('active');
+          mobileNavLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>
